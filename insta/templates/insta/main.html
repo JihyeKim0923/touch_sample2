@@ -40,7 +40,33 @@
         <p class="card-text">{{post.caption}}</p>
     </div>
     <div class="card-footer text-muted">
-    <p>{{post.like_count}}</p>
+    <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#post-{{ post.id }}">
+          댓글 보기
+        </button>
+        <form action="{% url 'like' post.id %}" method="post" class="float-right">
+          {% csrf_token %}
+
+          {% if user.is_authenticated %}
+            {% if post.id in liked_post %}
+            <button style="border: none; background-color: Transparent;" onclick="location.href='{{post_pk}}/like/'"><i
+                class="fas fa-heart fa-2x" style="color: pink;"></i></button>
+                {{ post.like_count }}
+            {% else %}
+            <button style="border: none; background-color: Transparent;" onclick="location.href='{{post_pk}}/like/'"><i
+                class="far fa-heart fa-2x" style="color: pink;"></i></button>
+                {{ post.like_count }}
+            {% endif %}
+
+          {% else %}
+            
+            <button style="border: none; background-color: Transparent;" onclick="location.href='{{post_pk}}/like/';return confirm('로그인해주세요!')"><i
+                class="fas fa-heart fa-2x" style="color: pink;"></i></button>
+                {{ post.like_count }}
+            
+            
+          {% endif %}
+        </form>
+      </div>
     </div>
 
 <style>
@@ -52,5 +78,27 @@
     }
 </style>
 
+<!-- Modal -->
+<div class="modal fade" id="post-{{ post.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal 끝-->
 {% endfor %}
+
 {% endblock %}

@@ -117,8 +117,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+#유저 모델
 AUTH_USER_MODEL='insta.User'
+
+#정적 파일
 STATIC_URL = '/static/'
 
+#미디어 파일
 MEDIA_URL='/media/'
 MEDIA_POOT=os.path.join(BASE_DIR,'media')
+
+
+#로그인/로그아웃 후 이동할(리다이렉트 될) 주소
+LOGIN_REDIRECT_URL="main"
+LOGOUT_REDIRECT_URL="main"
