@@ -6,10 +6,11 @@
 
   <form action="{% url 'like' post.id %}" method="post" class="float-right">
     {% csrf_token %}
-      <!--<button style="border: none; background-color: Transparent;" onclick="location.href='{{post_pk}}/like/'; location.href='{% url 'count' %}'"><img src="{{post.image.url}}"></button></a>
-     -->
-    <div style='margin-top:120px;margin-left:450px;'>
-      <a href="javascript:history.go(0);"><a href="{% url 'count' %}" class="test" onclick="location.href='{{post_pk}}/like/';"><img src="{{post.image.url}}"  style="width:800px"></a></a>
+   
+    <div style="text-align:center">
+    <a style="font-size:100px;color:white;" href="{% url 'count' %}">touch</a>
+    <button style="border: none; background-color: Transparent;" onclick="parent.location.href='{{post_pk}}/like/'; location.href="{% url 'count' %}""><img src="{{post.image.url}}"></button></a>
+    <a href="{% url 'count' %}" class="test" onclick="location.href='{{post_pk}}/like/'"><img src="{{post.image.url}}"  style="width:800px"></a>
     </div>
   </form>
 </body>
