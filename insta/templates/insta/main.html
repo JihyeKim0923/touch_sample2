@@ -1,23 +1,19 @@
 {% extends "insta/base.html" %} 
 {% block content %}
-
+<body  style='background-color:#070c21;'>
 <!-- post 추가 -->
 {% for post in posts %}
 
-        <form action="{% url 'like' post.id %}" method="post" class="float-right">
-          {% csrf_token %}
-              <button style="border: none; background-color: Transparent;" onclick="location.href='{{post_pk}}/like/'">{{post.image}}</button>
-                {{ post.like_count }}
-        </form>
+  <form action="{% url 'like' post.id %}" method="post" class="float-right">
+    {% csrf_token %}
+      <!--<button style="border: none; background-color: Transparent;" onclick="location.href='{{post_pk}}/like/'; location.href='{% url 'count' %}'"><img src="{{post.image.url}}"></button></a>
+     -->
+    <div style='margin-top:120px;margin-left:450px;'>
+      <a href="javascript:history.go(0);"><a href="{% url 'count' %}" class="test" onclick="location.href='{{post_pk}}/like/';"><img src="{{post.image.url}}"  style="width:800px"></a></a>
+    </div>
+  </form>
+</body>
 
-<style>
-    .profile{
-        border: 2px solid black;
-        border-radius: 50%;
-        heigh: 50px;
-        width: 50px;%
-    }
-</style>
 {% endfor %}
 
 {% endblock %}

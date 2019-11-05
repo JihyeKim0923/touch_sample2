@@ -2,20 +2,12 @@
 <html lang="en">
  
     <!--navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark ">
-        <div class= "collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-          
+
           {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class= "nav-link" href="{% url 'logout' %}" onclick="return confirm('로그아웃하시겠습니까?')">로그아웃</a>
-            </li>
+              <a class= "nav-link" href="{% url 'logout' %}" onclick="return confirm('로그아웃하시겠습니까?')">로그아웃</a> 
           {% else %}
             <a class= "nav-link" href="{% url 'login' %}">로그인</a>
           {% endif %}
-          </ul>
-        </div>
-    </nav>
 
     <!--endnavbar -->
     <div class='container'>

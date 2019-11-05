@@ -8,26 +8,6 @@ def main(request):
     posts=Post.objects.all()#2줄
     sort=request.GET.get('sort','')
 
-    if sort == 'new':
-        posts=Post.objects.all()
-    elif sort=='likedown':
-        ordered_posts={}
-        post_list=Post.objects.all()
-        for post in post_list:
-            ordered_posts[post]=post.like_count
-        post_list=sorted(ordered_posts.items(), key=operator.itemgetter(1),reverse=False)
-        posts=[]
-        for post in post_list:
-            posts.append(post[0])
-    elif sort=='likeup':
-        ordered_posts={}
-        post_list=Post.objects.all()
-        for post in post_list:
-            ordered_posts[post]=post.like_count
-        post_list=sorted(ordered_posts.items(), key=operator.itemgetter(1),reverse=True)
-        posts=[]
-        for post in post_list:
-            posts.append(post[0])
 
     try:
         liked_post=Like.objects.filter(user=request.user).values_list('post__id', flat=True)
@@ -48,10 +28,7 @@ def like(request, post_pk):
     post= get_object_or_404(Post, pk=post_pk)
 
     if request.method =='POST':
-        try:
-            like=Like.objects.get(user=request.user, post=post)
-            like.delete()
-        except:
+        
             Like.objects.create(user=request.user, post=post)
 
     return redirect('main')

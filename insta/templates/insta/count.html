@@ -1,7 +1,123 @@
+
 {% block content %}
+<body  style='background-color:#070c21;'>
+ {% for post in posts %}
+  <div class="button-7" style='margin-top:20px;'>
+    <div class="eff-7"></div>
+    <a href='{% url 'main'%}'>TOUCH</a>
+  </div>
+    <div style="text-align:center">
+    <br><br><br><br><br><br>
+    <p style=' font-size:300px; color:white;'> {{ post.like_count }}</p><p style='font-size:50px; color:white;'>번째 터치입니다</p>
+  
+    </div>
 
-{% for post in posts %}
-    {{ post.like_count }}<p>번째 TOUCH 입니다.</p>
-{% endfor %}
-
+    <div style="margin:auto;color:white;font-size:60px; text-align:center">
+         <script language="JavaScript">
+          <!--
+          function random_text()
+          {};
+          var random_text = new random_text();
+          
+          var number = 0;
+          random_text[number++] = "좋은 하루"
+          random_text[number++] = "행복한 하루"
+          random_text[number++] = "오늘도 활기찬 하루"
+          random_text[number++] = "ㅇ아아아아아아ㅏㅇ아ㅏ아아ㅏ앙 밑으로 내려각랄라라ㅏ라라라라라라라라라"
+          random_text[number++] = "텍스트6 "
+          random_text[number++] = "Random Text7"
+          random_text[number++] = "Random Text8"
+         
+          var random_number = Math.floor(Math.random() * number);
+          // Write out the random text to the browser
+          document.write(random_text[random_number]);
+          --></script>
+    </div>
+      {% endfor %}
 {% endblock %}
+
+
+<style>
+p {
+    display: inline;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+#container{
+  width:715px;
+  height:100px;
+}
+
+.button-7{
+  width:100px;
+  height:50px;
+  border:2px solid white;
+  float:left;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  box-sizing:border-box;
+  overflow:hidden;
+  margin:0 0 0 10px;
+}
+.button-7 a{
+  font-family:arial;
+  font-size:25px;
+  color:white;
+  text-decoration:none;
+  line-height:50px;
+  transition:all .5s ease;
+  z-index:2;
+  position:relative;
+}
+.eff-7{
+  width:100px;
+  height:50px;
+  border:0px solid white;
+  position:absolute;
+  transition:all .5s ease;
+  z-index:1;
+  box-sizing:border-box;
+}
+.button-7:hover .eff-7{
+  border:70px solid white;
+}
+.button-7:hover a{
+  color:black;
+}
+
+h1{
+  font-family: 'Oswald', sans-serif;
+  font-weight:normal;
+  font-size:24px;
+  color:#34495e;
+  text-align:center;
+  margin:0 auto 40px 0;
+}
+h1:first-letter{
+  color:#e74c3c;
+  border-bottom:1px solid #e74c3c;
+}
+footer{
+  position:absolute;
+  width:100%;
+  height:30px;
+  border-top:1px solid #34495e;
+  bottom:0;
+  display:none;
+}
+footer h1{
+  font-family: 'Oswald', sans-serif;
+  font-weight:normal;
+  font-size:14px;
+  color:#34495e;
+  text-align:left;
+  margin-left:5%;
+}
+footer a{
+  font-family: 'Oswald', sans-serif;
+  font-weight:normal;
+  font-size:14px;
+  color:#34495e;
+}
+</style>
+</body>
